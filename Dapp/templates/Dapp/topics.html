@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Topics: {{ record }} {{ recordies }}</p>
+<ul>
+    {% for topics in topic %}
+        <li>{{ topics }}</li>
+    {% empty %}
+        <li>No Topics yet</li>
+    {% endfor %}
+
+</ul>
+
+<P>Records: </P>
+<ul>
+    <!-- {% for recordie in record %}
+        <li>{{ recordie }}</li>
+    {% empty %}
+        <li> No records yet! </li>
+    {% endfor %} -->
+
+    {% for recordies in record %}
+    <li>
+        <p>{{ record.dateAdded|date:'M d, Y H:i' }}</p>
+        <p>{{ record.text|linebreaks }}</p>
+    </li>
+    {% empty %}
+        <li>There are no entries for this topic yet.</li>
+    {% endfor %}
+
+</ul>
+{% endblock content %}
